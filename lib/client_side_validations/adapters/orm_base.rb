@@ -54,9 +54,9 @@ module ClientSideValidations
             (on == :create && base.new_record?) ||
             (on == :update && !base.new_record?)
           elsif(if_condition = (validation.options[:if] || validation.options[:allow_validation]))
-            base.instance_eval(if_condition.to_s)
+            base.instance_eval(&if_condition)
           elsif(unless_condition = (validation.options[:unless] || validation.options[:skip_validation]))
-            !base.instance_eval(unless_condition.to_s)
+            !base.instance_eval(&unless_condition)
           else
             true
           end
