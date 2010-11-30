@@ -41,7 +41,7 @@ module ClientSideValidations
         when 'presence'
           'required'
         when 'numericality'
-          if options['only_integer']
+          if options['integer_only']
             'digits'
           elsif options['greater_than']
             'greater_than'
